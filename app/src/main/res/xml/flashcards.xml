@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <flashcards>
-    <flashcard question="What is the capital of France?" answer="Paris" />
-    <flashcard question="What is 2 + 2?" answer="4" />
-    <flashcard question="What is the largest ocean?" answer="Pacific Ocean" />
-    <flashcard question="Who wrote 'Romeo and Juliet'?" answer="William Shakespeare" />
-    <flashcard question="What is the boiling point of water?" answer="100°C" />
+    <card>
+        <question>What is the capital of France?</question>
+        <answer>Paris</answer>
+    </card>
+    <card>
+        <question>What is 2 + 2?</question>
+        <answer>4</answer>
+    </card>
+    <card>
+        <question>What is the largest ocean?</question>
+        <answer>Pacific Ocean</answer>
+    </card>
+    <card>
+        <question>Who wrote 'Romeo and Juliet'?</question>
+        <answer>William Shakespeare</answer>
+    </card>
+    <card>
+        <question>What is the boiling point of water</question>
+        <answer>100°C</answer>
+    </card>
 </flashcards>

@@ -32,10 +32,22 @@ fun parseFlashcardsXml(context: Context): List<Flashcard> {
     val flashcards = mutableListOf<Flashcard>()
     val parser = context.resources.getXml(R.xml.flashcards)
     var eventType = parser.eventType
+
     while (eventType != XmlPullParser.END_DOCUMENT) {
-        if (eventType == XmlPullParser.START_TAG && parser.name == "flashcard") {
-            val question = parser.getAttributeValue(null, "question") ?: ""
-            val answer = parser.getAttributeValue(null, "answer") ?: ""
+        if (eventType == XmlPullParser.START_TAG && parser.name == "card") {
+            var question = ""
+            var answer = ""
+            val cardDepth = parser.depth
+            eventType = parser.next()
+            while (!(eventType == XmlPullParser.END_TAG && parser.name == "card" && parser.depth == cardDepth)) {
+                if (eventType == XmlPullParser.START_TAG) {
+                    when (parser.name) {
+                        "question" -> question = parser.nextText()
+                        "answer" -> answer = parser.nextText()
+                    }
+                }
+                eventType = parser.next()
+            }
             if (question.isNotEmpty() && answer.isNotEmpty()) {
                 flashcards.add(Flashcard(question, answer))
             }
@@ -44,6 +56,7 @@ fun parseFlashcardsXml(context: Context): List<Flashcard> {
     }
     return flashcards
 }
+
 
 // Single flashcard component: flips when clicked
 @Composable
